@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+.warna1 {
+    background-color: #003C43;
+}
+
+.warna2 {
+    background-color: #135D66;
+}
+
+.warna3 {
+    background-color: #77B0AA;
+}
+
+.warna4 {
+    background-color: #E3FEF7;
+}
+
+.button-click:hover,
+.button-click:focus,
+.button-click:active {
+    background-color: #77B0AA;
+    color: white;
+    text-decoration: none;
+}
+
+.banner {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.highlighted-kategori {
+    height: 150px;
+}
+
+.kategori-batu-permata {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/batu-permata.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.kategori-cincin-permata {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/cincin-permata.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.kategori-gagang-cincin {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/gagang-cincin.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.no-decoration {
+    text-decoration: none;
+    color: white;
+}
+
+.no-decoration:hover {
+    color: #E3FEF7;
+}
+
+.text-harga {
+    font-size: 20px;
+    color: #888888;
+}
+
+.image-box {
+    height: 250px;
+}
+
+.image-box img {
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform;
+
+}
+
+.image-box:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.content-subscribe {
+    background-color: rgba(0,0,0,0.7);
+}
+
+.banner2 {
+    height: 45vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.teks-produk-detail {
+    color: #888888; 
+}
+
+.produk-terkait-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.bannerproduk {
+    height: 45vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/image/bannerproduk.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.tentang-kami {
+    height: 55vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../image/tentang-kami.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.custom-btn {
+    padding: 4px 12px;
+    font-size: 14px;
+}
+
+.custom-font {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.font-custom {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.sidebar-kategori {
+    max-height: 160px;
+    overflow-y: auto;
+}
+
+.text-efek {
+    display: inline-block; /* biar transform berfungsi */
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.text-efek:hover {
+    transform: scale(1.1); /* zoom */
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3); /* bayangan makin tegas */
+}
+
+.text-shadow {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* bayangan halus */
+}
