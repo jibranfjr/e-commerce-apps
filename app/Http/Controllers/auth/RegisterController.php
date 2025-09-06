@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -22,12 +24,20 @@ class RegisterController extends Controller
             'password' => 'required|string|min:4',
         ]);
 
-        User::create([
+        $user = User::create([
             'username' => $request->username,
-            'email' => $request->email,
+            'email'    => $request->email,
             'password' => Hash::make($request->password),
+            'role'     => $request->email === 'admin@gmail.com' ? 'admin' : 'customer',
         ]);
 
-        return redirect()->route('login')->with('success', 'Registrasi berhasil! Silakan login.');
+        // langsung login
+        Auth::login($user);
+
+        // trigger event registered (otomatis kirim email verifikasi)
+        event(new Registered($user));
+
+        return redirect()->route('register.form')
+        ->with('success', 'Akun berhasil dibuat! Link verifikasi telah dikirim ke email Anda.');
     }
 }

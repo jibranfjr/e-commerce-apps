@@ -1,4 +1,4 @@
-{{-- resources/views/home.blade.php --}}
+{{-- resources/views/dashboard.blade.php --}}
     
 @extends('layouts.app')
 @include('partials.navbar')
@@ -45,7 +45,7 @@
 </div>
 
 <!-- produk -->
-<div class="container-fluid py-5 font-custom">
+<div class="container-fluid py-5 font-custom mb-3">
     <div class="container text-center">
         <h3>Products</h3>
         <hr>

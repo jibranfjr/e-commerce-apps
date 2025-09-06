@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-v2.css') }}">
     <style>
-        .summary-kategori { background-color: #14995e; border-radius: 10px }
-        .summary-produk { background-color: #0a516b; border-radius: 10px }
-        .summary-transaksi { background-color: #B82132; border-radius: 10px }
-        .summary-users { background-color: #415E72; border-radius: 10px}
+        .summary-kategori { background-color: #526D82; border-radius: 10px }
+        .summary-produk { background-color: #526D82; border-radius: 10px }
+        .summary-transaksi { background-color: #526D82; border-radius: 10px }
+        .summary-users { background-color: #526D82; border-radius: 10px}
         .no-decoration { text-decoration: none; }
     </style>
 </head>

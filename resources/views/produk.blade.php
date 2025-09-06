@@ -16,7 +16,7 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-3 bg-light sidebar-kategori">
-            <h3 class="font-custom mb-3 mt-2">Kategori</h3>
+            <h3 class="font-custom mb-3 mt-2">Category</h3>
             <ul class="list-group">
                 @foreach($kategori as $kat)
                 <a href="{{ route('produk.index', ['kategori' => $kat->nama]) }}" class="no-decoration">
@@ -30,7 +30,7 @@
             <h3 class="text-center mb-3 font-custom">Products</h3>
             <div class="row">
                 @if($produk->isEmpty())
-                    <h4 class="text-center my-5">Produk yang anda cari tidak tersedia</h4>
+                    <h4 class="text-center my-5">The product you are looking for is not available</h4>
                 @else
                     @foreach($produk as $item)
                     <div class="col-md-4 mb-4">

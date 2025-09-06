@@ -54,7 +54,7 @@
                                 <form action="{{ route('admin.users.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus User ini?')">Delete</button>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus User ini?')">Hapus</button>
                                     </form>
                             </td>
                         </tr>

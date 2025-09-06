@@ -46,7 +46,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>
-                            <a href="{{ route('admin.kategori.show', $item->id) }}" class="btn btn-info">
+                            <a href="{{ route('admin.kategori.show', $item->id) }}" class="btn warna2 button-click text-white">
                                 <i class="fas fa-search"></i>
                             </a>
                         </td>
@@ -61,7 +61,7 @@
         </table>
     </div>
     <div>
-        <a href="{{ route('admin.kategori.create') }}" class="btn btn-primary">Tambah Kategori</a>
+        <a href="{{ route('admin.kategori.create') }}" class="btn warna2 button-click text-white">Tambah Kategori</a>
     </div>
 </div>
 @endsection

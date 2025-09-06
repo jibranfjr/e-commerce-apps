@@ -30,7 +30,7 @@
                     class="form-control" required>
             </div>
             <div class="mt-2">
-                <button class="btn btn-success" type="submit">Tambah</button>
+                <button class="btn btn warna2 button-click text-white" type="submit">Tambah</button>
             </div>
         </form>
         @if(session('success'))

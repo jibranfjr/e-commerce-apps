@@ -34,4 +34,9 @@ class Transaksi extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function details()
+    {
+        return $this->hasMany(TransaksiDetail::class, 'id_transaksi');
+    }
 }

@@ -52,7 +52,7 @@
                 </select>
             </div>
             <div class="mt-2">
-                <button type="submit" class="btn btn-success">Tambah</button>
+                <button type="submit" class="btn warna2 button-click text-white">Tambah</button>
             </div>
         </form>
         @if(session('success'))

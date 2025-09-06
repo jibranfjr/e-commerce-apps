@@ -65,14 +65,14 @@ class KategoriController extends Controller
 
         DB::table('kategori')->where('id', $id)->update(['nama' => $request->kategori]);
 
-        return back()->with('success', 'Kategori Berhasil Di Update');
+        return back()->with('success', 'Kategori Berhasil Di Simpan');
     }
 
     public function destroy($id)
     {
         DB::table('kategori')->where('id', $id)->delete();
 
-        return redirect()->route('admin.kategori.index')->with('success', 'Kategori Berhasil Di Delete');
+        return redirect()->route('admin.kategori.index')->with('success', 'Kategori Berhasil Di Hapus');
     }
 
 }

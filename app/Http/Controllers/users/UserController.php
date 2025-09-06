@@ -14,6 +14,7 @@ class UserController extends Controller
     {
         $transaksi = Transaksi::with('produk')
             ->where('id_user', Auth::id())
+            ->latest()
             ->get();
 
         return view('user', compact('transaksi'));

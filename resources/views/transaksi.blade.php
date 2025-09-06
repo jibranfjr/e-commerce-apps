@@ -11,6 +11,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body row">
+                    {{-- Kolom Kiri: Detail Produk --}}
                     <div class="col-md-6 border-end">
                         <h6 class="fw-bold mb-3">Transfer Ke Rekening Toko</h6>
                         <p class="mb-1">Bank: BRI</p>
@@ -18,17 +19,12 @@
                         <p class="mb-3">Atas Nama: Toko Permata Puri Bali</p>
                         <hr>
                         <h6 class="fw-bold mb-2">Detail Produk</h6>
-                        <input type="hidden" name="id_produk" value="{{ $produk->id }}">
-                        <p class="mb-1">Nama Produk:</p>
-                        <input type="text" class="form-control mb-2" value="{{ $produk->nama }}" readonly>
-                        <p class="mb-1">Harga:</p>
-                        <input type="text" class="form-control mb-2" value="Rp {{ number_format($produk->harga, 0, ',', '.') }}" readonly>
-                        <input type="hidden" id="harga_satuan" value="{{ $produk->harga }}">
-                        <p class="mb-1">Jumlah:</p>
-                        <input type="number" id="checkout_qty" name="jumlah" class="form-control mb-2" value="1" min="1" readonly>
-                        <p class="mb-1">Total Harga:</p>
+                        <div id="produkList"></div>
+                        <p class="mb-1 mt-2">Total Harga:</p>
                         <input type="text" id="total_harga" class="form-control" readonly>
                     </div>
+
+                    {{-- Kolom Kanan: Data Pemesan --}}
                     <div class="col-md-6">
                         <h6 class="fw-bold mb-3">Data Pemesan</h6>
                         <div class="mb-3">
@@ -75,3 +71,32 @@
     </div>
 </div>
 @endauth
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("formCheckoutModal");
+    modal.addEventListener("show.bs.modal", function () {
+        let produkList = document.getElementById("produkList");
+        produkList.innerHTML = "";
+        let total = 0;
+
+        document.querySelectorAll('input[name="selected_carts[]"]:checked').forEach(cb => {
+            let id = cb.getAttribute("data-produk-id");
+            let nama = cb.getAttribute("data-nama");
+            let harga = parseInt(cb.getAttribute("data-harga"));
+            let qty = parseInt(cb.getAttribute("data-qty"));
+            let subtotal = harga * qty;
+            total += subtotal;
+
+            produkList.innerHTML += `
+                <input type="hidden" name="id_produk[]" value="${id}">
+                <input type="hidden" name="jumlah[]" value="${qty}">
+                <p class="mb-1">${nama} (x${qty})</p>
+                <input type="text" class="form-control mb-2" value="Rp ${subtotal.toLocaleString('id-ID')}" readonly>
+            `;
+        });
+
+        document.getElementById("total_harga").value = "Rp " + total.toLocaleString("id-ID");
+    });
+});
+</script>

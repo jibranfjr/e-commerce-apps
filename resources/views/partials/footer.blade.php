@@ -14,7 +14,7 @@
                         @tokopermatapuribali
                     </p>
                     <p class="mb-0"><strong>Telepon:</strong>
-                        +62
+                        +62 858-5062-4650
                     </p>
                     <p class="mb-0"><strong>Jam Kerja:</strong>
                         Setiap Hari/ 10:00-17:00 WITA
@@ -27,13 +27,13 @@
                 <h4 class="mb-3 fs-5">Social Media</h4>
                 <div>
                     <small>
-                        <a href="https://www.facebook.com/" target="_blank" class="text-light no-decoration me-3">
+                        <a href="https://www.facebook.com/share/1AsSrpdtA5/?mibextid=wwXIfr" target="_blank" class="text-light no-decoration me-3">
                             <i class="fa-brands fa-facebook fa-2x"></i>
                         </a>
-                        <a href="https://www.instagram.com/" target="_blank" class="text-light no-decoration me-3">
+                        <a href="https://www.instagram.com/tokopermatapuribali?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="text-light no-decoration me-3">
                             <i class="fa-brands fa-instagram fa-2x"></i>
                         </a>
-                        <a href="https://wa.me/628" target="_blank" class="text-light no-decoration">
+                        <a href="https://wa.me/6285850624650" target="_blank" class="text-light no-decoration">
                             <i class="fa-brands fa-whatsapp fa-2x"></i>
                         </a>
                     </small>

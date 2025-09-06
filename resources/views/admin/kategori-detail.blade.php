@@ -32,16 +32,16 @@
                 <input type="text" name="kategori" id="kategori" class="form-control mt-1" value="{{ old('kategori', $kategori->nama) }}">
             </div>
 
-            <button type="submit" class="btn btn-success">Simpan</button>
+            <button type="submit" class="btn btn warna2 button-click text-white">Simpan</button>
         </form>
 
         <form action="{{ route('admin.kategori.destroy', $kategori->id) }}" method="POST" class="d-inline ms-auto" onsubmit="return confirm('Yakin ingin menghapus kategori ini?')">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger">Hapus</button>
         </form>
         @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>

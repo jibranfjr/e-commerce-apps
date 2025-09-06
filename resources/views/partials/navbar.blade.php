@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark warna1 font-custom">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('image/logo.png') }}" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
+            <img src="{{ asset('image/logo1.png') }}" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,6 +23,11 @@
 
             <ul class="navbar-nav ms-auto">
                     @auth
+                <li class="nav-item">
+                    <a href="{{ route('cart.index') }}" class="nav-link">
+                        <i class="fa fa-shopping-cart"></i> Cart
+                    </a>
+                </li>
                 <li class="nav-item me-4">
                         <a class="nav-link" href="{{ url('/user') }}">
                             User
@@ -33,6 +38,7 @@
                         </a>
                     @endauth
                 </li>
+
 
                 @auth
                 <li class="nav-item">

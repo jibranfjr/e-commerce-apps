@@ -13,34 +13,51 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_produk' => 'required|integer|exists:produk,id',
+            'id_produk' => 'required|array',
+            'id_produk.*' => 'exists:produk,id',
+            'jumlah' => 'required|array',
+            'jumlah.*' => 'integer|min:1',
             'alamat' => 'required|string',
             'bank' => 'required|string',
             'nama_rekening' => 'required|string',
             'nomor_rekening' => 'required|string',
-            'bukti_pembayaran' => 'required|image|max:2048',           
-            'jumlah' => 'required|integer',
+            'bukti_pembayaran' => 'required|image|max:2048',
         ]);
 
-        $fotoPath = null;
-        if ($request->hasFile('bukti_pembayaran')) {
-            $fotoPath = $request->file('bukti_pembayaran')->store('bukti-transfer', 'public');
-        }
+        // Upload bukti transfer
+        $fotoPath = $request->file('bukti_pembayaran')->store('bukti-transfer', 'public');
 
-        \App\Models\Transaksi::create([
+        // Simpan transaksi utama
+        $transaksi = \App\Models\Transaksi::create([
             'id_user' => Auth::id(),
-            'id_produk' => $request->id_produk,
             'alamat' => $request->alamat,
             'bank' => $request->bank,
             'nama_rekening' => $request->nama_rekening,
-            'nomor_rekening' => $request->nomor_rekening, 
-            'jumlah' => $request->jumlah,
+            'nomor_rekening' => $request->nomor_rekening,
             'bukti_pembayaran' => $fotoPath,
-            'status' => 'Pending'
+            'status' => 'Pending',
         ]);
+
+        // 🔥 Simpan detail produk yang dibeli
+        foreach ($request->id_produk as $index => $produkId) {
+            $produk = \App\Models\Produk::find($produkId);
+
+            \App\Models\TransaksiDetail::create([
+                'id_transaksi' => $transaksi->id,
+                'id_produk' => $produkId,
+                'jumlah' => $request->jumlah[$index] ?? 1,
+                'harga' => $produk->harga, // simpan harga produk saat transaksi
+            ]);
+
+            // 🧹 Hapus produk dari keranjang setelah diproses
+            \App\Models\Cart::where('id_user', Auth::id())
+                ->where('id_produk', $produkId)
+                ->delete();
+        }
 
         return redirect()->back()->with('success', 'Pesanan berhasil dikirim!');
     }
+
 
     public function riwayat()
     {

@@ -53,7 +53,7 @@
                             <td>{{ $item->harga }}</td>
                             <td>{{ $item->ketersediaan_stok }}</td>
                             <td>
-                                <a href="{{ route('admin.produk.show', $item->id) }}" class="btn btn-info">
+                                <a href="{{ route('admin.produk.show', $item->id) }}" class="btn warna2 button-click text-white">
                                     <i class="fas fa-search"></i>
                                 </a>
                             </td>
@@ -67,7 +67,7 @@
             </table>
         </div>
         <div>
-            <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">Tambah Produk</a>
+            <a href="{{ route('admin.produk.create') }}" class="btn warna2 button-click text-white">Tambah Produk</a>
         </div>
     </div>
 </div>

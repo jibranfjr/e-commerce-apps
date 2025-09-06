@@ -2,8 +2,8 @@
 
 @extends('layouts.app')
 @include('partials.navbar')
-
 @section('content')
+
 <div class="container mt-4 font-custom">
 
     {{-- Profil User --}}
@@ -15,9 +15,11 @@
                  width="80" height="80">
         </div>
         <div>
-            <h4 class="mb-1">{{ Auth::user()->name }}</h4>
+            <h4 class="mb-1">{{ Auth::user()->username }}</h4>
             <p class="mb-0 text-muted">{{ Auth::user()->email }}</p>
-            <small class="text-secondary">Joined since {{ Auth::user()->created_at->format('d M Y') }}</small>
+            <small class="text-secondary">
+                Joined since {{ auth()->user()->created_at->format('d M Y') }}
+            </small>
         </div>
     </div>
 
@@ -37,8 +39,21 @@
             <tbody>
                 @forelse($transaksi as $item)
                     <tr>
-                        <td>{{ $item->produk->nama }}</td>
-                        <td>{{ $item->jumlah }}</td>
+                        {{-- Produk yang dibeli --}}
+                        <td>
+                            @foreach($item->details as $detail)
+                                {{ $detail->produk?->nama ?? 'Produk dihapus' }} <br>
+                            @endforeach
+                        </td>
+
+                        {{-- Jumlah produk --}}
+                        <td>
+                            @foreach($item->details as $detail)
+                                {{ $detail->jumlah }} <br>
+                            @endforeach
+                        </td>
+
+                        {{-- Status pesanan --}}
                         <td>
                             @if($item->status === 'Konfirmasi Pemesanan')
                                 <span class="badge bg-success">Order Confirmed</span>
@@ -51,12 +66,12 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="3" class="text-center">Belum ada pesanan</td>
+                        <td colspan="4" class="text-center">No orders yet</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+        <div style="height: 50px;"></div>
     </div>
-
 </div>
 @endsection

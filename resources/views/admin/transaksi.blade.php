@@ -26,8 +26,15 @@
     
         <div class="table-responsive mt-5">
             @if(session('success'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -54,14 +61,28 @@
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $item->user->username ?? '-' }}</td>
-                            <td>{{ $item->produk->nama ?? '-' }}</td>
-                            <td>{{ $item->jumlah }}</td>
+                            
+                            {{-- Tampilkan semua produk yang dipesan dalam transaksi --}}
+                            <td>
+                                <ul class="mb-0">
+                                    @foreach ($item->details as $detail)
+                                        <li>{{ $detail->produk->nama }} (x{{ $detail->jumlah }})</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+
+                            {{-- Total jumlah barang --}}
+                            <td>
+                                {{ $item->details->sum('jumlah') }}
+                            </td>
+
+                            {{-- Status --}}
                             <td>
                                 @if($item->status == 'Pending')
                                     <form action="{{ route('admin.transaksi.konfirmasi', $item->id) }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <button type="submit" class="btn btn-success btn-sm">
+                                        <button type="submit" class="btn warna2 button-click text-white btn-sm">
                                             Konfirmasi
                                         </button>
                                     </form>
@@ -69,15 +90,24 @@
                                     <button type="submit" class="btn btn-success btn-sm" disabled>Sudah Dikonfirmasi</button>
                                 @endif
                             </td>
+
+                            {{-- Action --}}
                             <td>
-                                <a href="{{ route('admin.transaksi.show', $item->id) }}" class="btn btn-info">
+                                <a href="{{ route('admin.transaksi.show', $item->id) }}" method="GET" target="_blank" class="btn warna2 button-click text-white">
                                     <i class="fas fa-search"></i>
+                                </a>
+                            </td>
+                            {{-- Tombol Aksi --}}
+                            <td>
+                                <!-- {{-- Tombol untuk melihat invoice --}} -->
+                                <a href="{{ route('invoice.generate', $item->id) }}" class="btn warna2 button-click text-white">
+                                    Invoice
                                 </a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center">Data Transaksi tidak tersedia</td>
+                            <td colspan="6" class="text-center">Data Transaksi tidak tersedia</td>
                         </tr>
                     @endforelse
                 </tbody>
