@@ -11,7 +11,7 @@
                         Jalan Ahmad Yani Selatan no.16 Denpasar Utara, Denpasar, Bali.
                     </p>
                     <p class="mb-0"><strong>Email:</strong>
-                        @tokopermatapuribali
+                        puribalitokopermata@gmail.com
                     </p>
                     <p class="mb-0"><strong>Telepon:</strong>
                         +62 858-5062-4650

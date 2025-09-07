@@ -15,7 +15,7 @@
         <p style="color: green">{{ session('message') }}</p>
     @endif
 
-    <form method="POST" action="{{ route('verification.send') }}">
+    <form  class="mb-3" method="POST" action="{{ route('verification.send') }}">
         @csrf
         <button type="submit">Kirim Ulang Email Verifikasi</button>
     </form>

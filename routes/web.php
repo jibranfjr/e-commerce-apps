@@ -69,8 +69,9 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('laporan/transaksi/pdf', [LaporanController::class, 'transaksiPdf'])
         ->name('laporan.transaksi.pdf');
     
+    
 });
-Route::get('/invoice/{id}', [InvoiceController::class, 'generateInvoice'])
+Route::get('/invoice/{id}/download', [InvoiceController::class, 'generateInvoice'])
     ->name('invoice.generate');
 
 // ========================
