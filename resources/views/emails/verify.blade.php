@@ -1,7 +1,6 @@
 @component('mail::message')
 {{-- Header Logo --}}
 <div style="text-align:center;margin-bottom:25px;">
-    <img src="{{ asset('image/logo2.png') }}" alt="logo" width="140">
 </div>
 
 {{-- Greeting --}}

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/style-v2.css') }}">
 </head>
 <body>
-    <div class="main d-flex flex-column justify-content-center align-items-center mt-5" style="height: 100vh">
+    <div class="main d-flex flex-column justify-content-center align-items-center" style="height: 100vh">
         <div class="register-box p-4 shadow" style="width:500px; border-radius:10px">
             <div class="text-center mb-3">
                 <img src="{{ asset('image/logo2.png') }}" alt="Logo" style="width: 100px;">

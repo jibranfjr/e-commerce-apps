@@ -93,7 +93,7 @@
 
                             {{-- Action --}}
                             <td>
-                                <a href="{{ route('admin.transaksi.show', $item->id) }}" method="GET" target="_blank" class="btn warna2 button-click text-white">
+                                <a href="{{ route('admin.transaksi.show', $item->id) }}" method="GET" class="btn warna2 button-click text-white">
                                     <i class="fas fa-search"></i>
                                 </a>
                                 <a href="{{ route('invoice.generate', $item->id) }}" class="btn warna2 button-click text-white btn-sm">

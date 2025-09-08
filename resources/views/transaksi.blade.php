@@ -71,6 +71,20 @@
     </div>
 </div>
 @endauth
+@if(session('success'))
+    <div class="alert alert-success mt-3">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('invoice_id'))
+    <script>
+        window.onload = function() {
+            // otomatis buka tab baru untuk download invoice
+            window.open("{{ route('invoice.generate', session('invoice_id')) }}", "_blank");
+        }
+    </script>
+@endif
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {

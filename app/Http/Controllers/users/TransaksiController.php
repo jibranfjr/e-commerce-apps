@@ -55,7 +55,10 @@ class TransaksiController extends Controller
                 ->delete();
         }
 
-        return redirect()->back()->with('success', 'Pesanan berhasil dikirim!');
+        return redirect()
+        ->back()
+        ->with('success', 'Pesanan berhasil dikirim!')
+        ->with('invoice_id', $transaksi->id);
     }
 
 

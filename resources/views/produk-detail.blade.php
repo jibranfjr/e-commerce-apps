@@ -49,6 +49,17 @@
                             <button type="submit" class="btn warna2 button-click text-white">
                                 <i class="fa fa-shopping-cart"></i> Add to Cart
                             </button>
+                            <button 
+                                type="button" 
+                                class="btn warna2 text-white button-click"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#formCheckoutModal"
+                                data-produk-id="{{ $produk->id }}"
+                                data-nama="{{ $produk->nama }}"
+                                data-harga="{{ $produk->harga }}"
+                                onclick="prepareDirectCheckout(this)">
+                                Buy Product
+                            </button>
                         </form>
                     @else
                         <div class="alert alert-warning mt-3">
@@ -60,6 +71,8 @@
         </div>
     </div>
 </div>
+{{-- Include file modal checkout --}}
+@include('transaksi')
 
 <div class="container-fluid py-5 bg-light font-custom">
     <div class="container">
@@ -88,6 +101,23 @@
         let hargaSatuan = parseInt(document.getElementById('harga_satuan').value);
         let total = hargaSatuan * parseInt(qty);
         document.getElementById('total_harga').value = 'Rp ' + total.toLocaleString('id-ID');
+    }
+    function prepareDirectCheckout(button) {
+        let id = button.getAttribute("data-produk-id");
+        let nama = button.getAttribute("data-nama");
+        let harga = parseInt(button.getAttribute("data-harga"));
+        let qty = parseInt(document.getElementById("qty").value);
+        let subtotal = harga * qty;
+
+        let produkList = document.getElementById("produkList");
+        produkList.innerHTML = `
+            <input type="hidden" name="id_produk[]" value="${id}">
+            <input type="hidden" name="jumlah[]" value="${qty}">
+            <p class="mb-1">${nama} (x${qty})</p>
+            <input type="text" class="form-control mb-2" value="Rp ${subtotal.toLocaleString('id-ID')}" readonly>
+        `;
+
+        document.getElementById("total_harga").value = "Rp " + subtotal.toLocaleString("id-ID");
     }
 </script>
 @endsection
