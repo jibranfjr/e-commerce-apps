@@ -25,7 +25,9 @@ class TransaksiController extends Controller
         ]);
 
         // Upload bukti transfer
-        $fotoPath = $request->file('bukti_pembayaran')->store('bukti-transfer', 'public');
+        $file = $request->file('bukti_pembayaran');
+        $filename = uniqid() . '.' . $file->getClientOriginalExtension(); // contoh: 64f1c23a9d8f7.jpg
+        $file->storeAs('bukti-transfer', $filename, 'public');
 
         // Simpan transaksi utama
         $transaksi = \App\Models\Transaksi::create([
@@ -34,11 +36,10 @@ class TransaksiController extends Controller
             'bank' => $request->bank,
             'nama_rekening' => $request->nama_rekening,
             'nomor_rekening' => $request->nomor_rekening,
-            'bukti_pembayaran' => $fotoPath,
+            'bukti_pembayaran' => $filename,
             'status' => 'Pending',
         ]);
 
-        // 🔥 Simpan detail produk yang dibeli
         foreach ($request->id_produk as $index => $produkId) {
             $produk = \App\Models\Produk::find($produkId);
 
@@ -46,10 +47,9 @@ class TransaksiController extends Controller
                 'id_transaksi' => $transaksi->id,
                 'id_produk' => $produkId,
                 'jumlah' => $request->jumlah[$index] ?? 1,
-                'harga' => $produk->harga, // simpan harga produk saat transaksi
+                'harga' => $produk->harga, 
             ]);
 
-            // 🧹 Hapus produk dari keranjang setelah diproses
             \App\Models\Cart::where('id_user', Auth::id())
                 ->where('id_produk', $produkId)
                 ->delete();

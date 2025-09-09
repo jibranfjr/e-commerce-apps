@@ -41,6 +41,7 @@
                         <th>No.</th>
                         <th>Username</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -50,6 +51,7 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $item->username }}</td>
                             <td>{{ $item->email }}</td>
+                            <td>{{ $item->role }}</td>
                             <td>
                                 <form action="{{ route('admin.users.destroy', $item->id) }}" method="POST">
                                         @csrf

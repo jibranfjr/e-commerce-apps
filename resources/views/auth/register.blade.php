@@ -42,6 +42,13 @@
                     @enderror
                 </div>
                 <div>
+                    <label for="alamat">Alamat Lengkap *</label>
+                    <input type="alamat" class="form-control" name="alamat" id="alamat" value="{{ old('alamat') }}">
+                    @error('alamat')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div>
                     <button class="btn btn-success form-control mt-3" type="submit">Register</button>
                 </div>
                 <div class="d-flex justify-content-between mt-3">

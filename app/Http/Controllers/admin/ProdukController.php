@@ -25,10 +25,10 @@ class ProdukController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama' => 'required|string|max:30',
             'id_kategori' => 'required|exists:kategori,id',
             'harga' => 'required|numeric',
-            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:500',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png,gif',
             'detail' => 'nullable|string',
             'ketersediaan_stok' => 'required|in:Tersedia,Habis',
         ]);
@@ -63,7 +63,7 @@ class ProdukController extends Controller
             'kategori' => 'required|exists:kategori,id',
             'harga' => 'required|numeric',
             'detail' => 'nullable|string',
-            'foto' => 'nullable|image|mimes:jpg,png,gif|max:500',
+            'foto' => 'nullable|image|mimes:jpg,png,gif',
         ]);
 
         $produk->nama = $request->nama;

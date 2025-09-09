@@ -68,6 +68,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);
     Route::get('laporan/transaksi/pdf', [LaporanController::class, 'transaksiPdf'])
         ->name('laporan.transaksi.pdf');
+    Route::get('laporan/transaksi/preview', [LaporanController::class, 'transaksiPreview'])
+        ->name('laporan.transaksi.preview');
     
     
 });

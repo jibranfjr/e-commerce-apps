@@ -25,7 +25,7 @@ class CustomLoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            if (in_array($user->email, ['admin@gmail.com', 'admin1@gmail.com'])) {
+            if (in_array($user->email, ['puribalitokopermata@gmail.com'])) {
                 return redirect()->route('admin.dashboard');
             }
 

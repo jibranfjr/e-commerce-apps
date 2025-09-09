@@ -34,6 +34,7 @@
                     <th>Products</th>
                     <th>Amount</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +63,11 @@
                             @else
                                 <span class="badge bg-secondary">{{ $item->status }}</span>
                             @endif
+                        </td>
+                        <td>
+                            <a href="{{ route('invoice.generate', $item->id) }}" class="btn warna2 button-click text-white btn-sm">
+                                Invoice
+                            </a>
                         </td>
                     </tr>
                 @empty

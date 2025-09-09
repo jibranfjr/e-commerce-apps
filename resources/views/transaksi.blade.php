@@ -33,7 +33,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat Lengkap</label>
-                            <textarea id="alamat" name="alamat" class="form-control" rows="3" required></textarea>
+                            <textarea id="alamat" name="alamat" class="form-control" rows="3" required>{{ old('alamat', Auth::user()->alamat) }}</textarea>
                         </div>
                         <div class="mb-3">
                             <label for="bank" class="form-label">Transfer dari Bank</label>
@@ -71,12 +71,6 @@
     </div>
 </div>
 @endauth
-@if(session('success'))
-    <div class="alert alert-success mt-3">
-        {{ session('success') }}
-    </div>
-@endif
-
 @if(session('invoice_id'))
     <script>
         window.onload = function() {

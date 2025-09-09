@@ -92,7 +92,7 @@
                 <div class="mb-3">
                     <label class="form-label">Bukti Pembayaran</label><br>
                     <a href="{{ asset('storage/' . $transaksi->bukti_pembayaran) }}" target="_blank">
-                        <img src="{{ asset('storage/' . $transaksi->bukti_pembayaran) }}" width="120px">
+                        <img src="{{ asset('storage/bukti-transfer/' . $transaksi->bukti_pembayaran) }}" width="200">
                     </a>
                 </div>
             </form>

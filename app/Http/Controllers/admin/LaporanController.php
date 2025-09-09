@@ -10,6 +10,24 @@ use Carbon\Carbon;
 
 class LaporanController extends Controller
 {
+    public function transaksiPreview(Request $request)
+    {
+        $query = \App\Models\Transaksi::query();
+
+        if ($request->filter === 'minggu') {
+            $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
+        } elseif ($request->filter === 'bulan') {
+            $query->whereMonth('created_at', now()->month);
+        } elseif ($request->filter === 'custom' && $request->start_date && $request->end_date) {
+            $query->whereBetween('created_at', [$request->start_date, $request->end_date]);
+        }
+
+        $transaksi = $query->get();
+
+        // langsung return view (HTML)
+        return view('laporan.transaksi_pdf', compact('transaksi'));
+    }
+
     public function transaksiPdf(Request $request)
     {
         $query = Transaksi::with(['user', 'details.produk']);

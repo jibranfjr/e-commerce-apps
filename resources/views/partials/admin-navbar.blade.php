@@ -39,22 +39,28 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="laporanDropdown">
                         <li>
-                            <a class="dropdown-item" href="{{ route('admin.laporan.transaksi.pdf', ['filter' => 'minggu']) }}" target="_blank">
+                            <a class="dropdown-item" href="{{ route('admin.laporan.transaksi.preview', ['filter' => 'minggu']) }}" target="_blank">
                                 Laporan Minggu Ini
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="{{ route('admin.laporan.transaksi.pdf', ['filter' => 'bulan']) }}" target="_blank">
+                            <a class="dropdown-item" href="{{ route('admin.laporan.transaksi.preview', ['filter' => 'bulan']) }}" target="_blank">
                                 Laporan Bulan Ini
                             </a>
                         </li>
                         <li>
-                            <form action="{{ route('admin.laporan.transaksi.pdf') }}" method="GET" target="_blank" class="px-3 py-2">
+                            <form id="laporanForm" method="GET" class="px-3 py-2">
                                 <label class="form-label">Custom Range</label>
                                 <input type="date" name="start_date" class="form-control mb-2" required>
                                 <input type="date" name="end_date" class="form-control mb-2" required>
                                 <input type="hidden" name="filter" value="custom">
-                                <button type="submit" class="btn btn-sm warna2 text-white button-click w-100">Cetak</button>
+
+                                <div class="d-flex gap-2 mb-2">
+                                    <button type="submit" onclick="setAction('preview')" class="btn btn-sm warna2 text-white button-click w-100">Preview</button>
+                                </div>
+                                <div>
+                                    <button type="submit" onclick="setAction('pdf')" class="btn btn-sm warna2 text-white button-click w-100">Cetak PDF</button>
+                                </div>
                             </form>
                         </li>
                     </ul>
@@ -73,3 +79,16 @@
         </div>
     </div>
 </nav>
+
+<script>
+function setAction(type) {
+    const form = document.getElementById('laporanForm');
+    if (type === 'preview') {
+        form.action = "{{ route('admin.laporan.transaksi.preview') }}";
+        form.target = "_self";
+    } else {
+        form.action = "{{ route('admin.laporan.transaksi.pdf') }}";
+        form.target = "_blank";
+    }
+}
+</script>
